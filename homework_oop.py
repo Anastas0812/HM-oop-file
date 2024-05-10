@@ -11,7 +11,7 @@ def do_cook_book():
             cook_book[dish_name] = list_ingr
     return cook_book
 cook_book = do_cook_book()
-print(f'Ответ к задаче №1: {cook_book}')
+# print(f'Ответ к задаче №1: {cook_book}')
 
 def get_shop_list_by_dishes(dishes, person_count):
     cook_book = do_cook_book()
@@ -30,57 +30,52 @@ def get_shop_list_by_dishes(dishes, person_count):
             d[x] = new_list
     return d
 
-print(f'Ответ к задаче №2: {get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2)}')
+# print(f'Ответ к задаче №2: {get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2)}')
 
-with open('1111/1.txt') as f:
-    lines1 = f.readlines()
-    lines1 = len(lines1)
 
-with open('1111/2.txt') as f:
-    lines2 = f.readlines()
-    lines2 = len(lines2)
 
-with open('1111/3.txt') as f:
-    lines3 = f.readlines()
-    lines3 = len(lines3)
+import os
+list_files = os.listdir('1111')
+folder_path = '1111'
+full_paths = [os.path.join(folder_path, file_name) for file_name in list_files]
 
-#2.txt < 1.txt < 3.txt
-# print(lines1, lines2, lines3)
-# min_line = min(lines1, lines2, lines3)
-# max_line = max(lines1, lines2, lines3)
-# print(min_line, max_line)
+dict_lines = {}
+for file in full_paths:
+    with open(f'{file}') as f:
+        for idx, line in enumerate(f):
+            pass
+            with open(f'{file}') as f:
+                data = f.read()
+                dict_lines[file.replace('1111/', '')] = idx + 1, data
+items = dict_lines.items()
 
-with open('1111/new.txt', 'w') as f:
-    f.write('2.txt\n')
-with open('1111/new.txt', 'a') as f:
-    f.write('1\n')
-with open('1111/2.txt') as f:
-    text2 = f.read()
-with open('1111/new.txt', 'a') as f:
-    f.write(text2)
-    f.write('\n\n')
+# if list(items)[0][1][0] <= list(items)[1][1][0] <= list(items)[2][1][0]:
+#     print(f'Возрастание построчно1: {list(items)[0], list(items)[1], list(items)[2]}')
+# elif list(items)[0][1][0] <= list(items)[2][1][0] <= list(items)[1][1][0]:
+#     print(f'Возрастание построчно2: {list(items)[0], list(items)[2], list(items)[1]}')
+# elif list(items)[1][1][0] <= list(items)[0][1][0] <= list(items)[2][1][0]:
+#     print(f'Возрастание построчно3: {list(items)[1], list(items)[0], list(items)[2]}')
+# elif list(items)[1][1][0] <= list(items)[2][1][0] <= list(items)[0][1][0]:
+#     print(f'Возрастание построчно4: {list(items)[1], list(items)[2], list(items)[0]}')
+# elif list(items)[2][1][0] <= list(items)[0][1][0] <= list(items)[1][1][0]:
+#     print(f'Возрастание построчно5: {list(items)[2], list(items)[0], list(items)[1]}')
+# elif list(items)[2][1][0] <= list(items)[1][1][0] <= list(items)[0][1][0]:
+#     print(f'Возрастание построчно6: {list(items)[2], list(items)[1], list(items)[0]}')
+# else:
+#     print('Ошибка')
 
-with open('1111/new.txt', 'a') as f:
-    f.write('1.txt\n')
-with open('1111/new.txt', 'a') as f:
-    f.write('8\n')
-with open('1111/1.txt') as f:
-    text1 = f.read()
-with open('1111/new.txt', 'a') as f:
-    f.write(text1)
-    f.write('\n\n')
+text = []
+result = list(items)[1], list(items)[2], list(items)[0]
+# print(result)
+for i in result:
+    for line in i:
+        for name in line:
+            text.append(name)
 
-with open('1111/new.txt', 'a') as f:
-    f.write('3.txt\n')
-with open('1111/new.txt', 'a') as f:
-    f.write('9\n')
-with open('1111/3.txt') as f:
-    text3 = f.read()
-with open('1111/new.txt', 'a') as f:
-    f.write(text3)
-    f.write('\n')
+text = ['2.txt\n', '1\n', 'Тревога началась в тринадцать часов ноль две минуты.\n', '1.txt\n', '8\n', 'Начальник  полиции\nлично позвонил в шестнадцатый участок. А спустя  одну минуту тридцать секунд\nв дежурке и других комнатах нижнего этажа раздались звонки\n     Когда Иенсен  --  комиссар  шестнадцатого  участка --  вышел  из своего\nкабинета,  звонки еще  не смолкли. Иенсен был мужчина средних лет,  обычного\nсложения, с лицом плоским и невыразительным. На последней ступеньке винтовой\nлестницы  он задержался  и  обвел взглядом помещение дежурки. Затем поправил\nгалстук и проследовал к машине.', '3.txt\n', '9\n', '     В  это время  дня  машины текли сплошным  блестящим  потоком,  а  среди\nпотока, будто  колонны из бетона  и стекла, высились  здания. Здесь,  в мире\nрезких граней,  люди  на тротуарах  выглядели  несчастными и  неприкаянными.\nОдеты они были хорошо, но как-то удивительно походили друг на друга и все до\nодного спешили. Они шли нестройными  вереницами, широко разливались, завидев\nкрасный  светофор или  металлический  блеск кафе-автоматов.  Они непрестанно\nозирались по сторонам и теребили портфели и сумочки.\n     Полицейские  машины  с  включенными  сиренами  пробивались  сквозь  эту\nтолчею.']
 
-with open('1111/new.txt') as f:
-    result = f.read()
+with open('new_file.txt', 'w') as f:
+    f.writelines(text)
+with open('new_file.txt', 'r') as f:
+    print(f'Ответ к задаче №3:\n{f.read()}')
 
-print(f'Ответ к задаче №3:\n{result}')
